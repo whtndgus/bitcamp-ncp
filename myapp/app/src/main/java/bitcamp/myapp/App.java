@@ -1,23 +1,13 @@
 package bitcamp.myapp;
 
-
-
 public class App {
 
-  public static void main(String[] args) {
-    String[] s1 = {"a", "b", "c", "d", "e", "f"};
-    String[] s2 = {"a b", 
-                   "a e", 
-                   "b c", 
-                   "f e", 
-                   "e c", 
-                   "e b", 
-                   "c d",
-                   "c a",
-                   "e a"};
-    for (int i : chatReport_PMS_12_30.solution(s1, s2, 2)) {
-      System.out.print(i + " ");
-    }
-  }
+  public static void main(String[] args) throws InterruptedException {
+    int n = 17;
+    int k = 3;
+    int[] ins = {4, 2, 4, 5, 3, 3, 1, 3, 6, 5, 8, 9};
+    System.out.println(DefenseGame.cut(ins, 0));
+    BowCup2_CP.prin(DefenseGame.cut(ins, 4));
 
+  }
 }

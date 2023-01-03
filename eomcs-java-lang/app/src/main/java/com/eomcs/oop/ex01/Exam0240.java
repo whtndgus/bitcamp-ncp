@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex01;
 
-//# 레퍼런스 배열 - 메서드 활용
+// # 레퍼런스 배열 - 메서드 활용
 //
 public class Exam0240 {
 
@@ -34,8 +34,8 @@ public class Exam0240 {
 
   // 클래스를 이용하면 성적 정보를 하나로 묶어 리턴할 수 있다.
   // 참고!
-  // - 다음과 같이 메서드를 통해 인스턴스를 생성하는 코딩 기법을 
-  //   "팩토리 메서드(factory method)" 패턴이라 부른다.
+  // - 다음과 같이 메서드를 통해 인스턴스를 생성하는 코딩 기법을
+  // "팩토리 메서드(factory method)" 패턴이라 부른다.
   static Score createScore(String name, int kor, int eng, int math) {
     Score s = new Score();
 
@@ -54,14 +54,10 @@ public class Exam0240 {
     // 결국 main()에서 만든 레퍼런스 배열을 사용하는 것이다.
     //
     for (int i = 0; i < arr.length; i++) {
-      System.out.printf("%s: %d, %d, %d, %d, %.1f\n",
-          arr[i].name, arr[i].kor, arr[i].eng, arr[i].math, arr[i].sum, arr[i].aver);
+      System.out.printf("%s: %d, %d, %d, %d, %.1f\n", arr[i].name, arr[i].kor, arr[i].eng,
+          arr[i].math, arr[i].sum, arr[i].aver);
     }
   }
 }
-
-
-
-
 
 

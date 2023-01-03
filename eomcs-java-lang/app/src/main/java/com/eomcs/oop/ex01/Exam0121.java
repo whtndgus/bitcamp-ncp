@@ -18,6 +18,12 @@ public class Exam0121 {
 
   public static void main(String[] args) {
 
+    class test {
+
+    }
+    test t1 = new test();
+
+
     Score s = new Score();
 
     s.name = "홍길동";
@@ -47,15 +53,8 @@ public class Exam0121 {
   static void printScore(Score s) {
     s.sum = s.kor + s.eng + s.math;
     s.aver = s.sum / 3;
-    System.out.printf("%s: %d, %d, %d, %d, %.1f\n",
-        s.name, s.kor, s.eng, s.math, s.sum, s.aver);
+    System.out.printf("%s: %d, %d, %d, %d, %.1f\n", s.name, s.kor, s.eng, s.math, s.sum, s.aver);
   }
 }
-
-
-
-
-
-
 
 
