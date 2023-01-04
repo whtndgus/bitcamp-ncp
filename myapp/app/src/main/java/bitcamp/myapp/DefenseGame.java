@@ -2,23 +2,15 @@ package bitcamp.myapp;
 
 public class DefenseGame {
   public static int solution(int n, int k, int[] enemy) {
-    int answer = 0;
-    int count = 0;
+    int answer = k;
+    int count = 1;
 
-    for (int i = 0; i < enemy.length; i++) {
-      if (n > enemy[i]) {
-        n -= enemy[i];
+    for (int i = k; i < enemy.length; i++) {
+      int[] tmp = cuts(enemy, i);
+
+      if (n >= sumMin(tmp, count++)) {
         answer = i + 1;
       } else {
-
-        for (int ii = 0; ii < enemy.length; ii++) {
-          if (k > 0) {
-            int[] tmps = absolute(enemy, 1);
-
-          } else {
-            break;
-          }
-        }
         break;
       }
     }
@@ -26,39 +18,44 @@ public class DefenseGame {
     return answer;
   }
 
-  public static int maxArray(int[] array) {
-    int max = -1;
-    for (int i : array) {
-      if (i > max) {
-        max = i;
+  public static int minArray(int[] array) {
+    int min = array[0];
+    int idx = 0;
+    for (int i = 0; i < array.length; i++) {
+      if (min > array[i]) {
+        idx = i;
+        min = array[i];
       }
     }
-    return max;
-  }
-
-  public static int[] absolute(int[] array, int in) {
-    for (int ii = 0; ii < in; ii++) {
-      int max = maxArray(array); // 배열의 최대값
-      for (int i = 0; i < array.length; i++) {
-        if (array[i] == max) {
-          array = cut(array, i);
-          break;
-        }
-      }
-    }
-    return array;
+    return idx;
   }
 
   public static int[] cut(int[] array, int idx) {
-    int[] tmps = new int[idx + 1];
+    int[] tmps = new int[array.length - 1];
     int in = 0;
-    for (int i = 0; i < idx + 1; i++) {
+    for (int i = 0; i < array.length; i++) {
       if (i != idx) {
         tmps[in++] = array[i];
       }
     }
-
-
     return tmps;
+  }
+
+  public static int[] cuts(int[] array, int idx) {
+    int[] tmps = new int[idx + 1];
+    for (int i = 0; i < idx + 1; i++) {
+      tmps[i] = array[i];
+    }
+    return tmps;
+  }
+
+  public static int sumMin(int[] array, int in) {
+    int sum = 0;
+    for (int i = 0; i < in; i++) {
+      int idx = minArray(array);
+      sum += array[idx];
+      array = cut(array, idx);
+    }
+    return sum;
   }
 }

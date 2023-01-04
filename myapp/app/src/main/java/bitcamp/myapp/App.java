@@ -3,11 +3,11 @@ package bitcamp.myapp;
 public class App {
 
   public static void main(String[] args) throws InterruptedException {
-    int n = 17;
-    int k = 3;
-    int[] ins = {4, 2, 4, 5, 3, 3, 1, 3, 6, 5, 8, 9};
-    System.out.println(DefenseGame.cut(ins, 0));
-    BowCup2_CP.prin(DefenseGame.cut(ins, 4));
-
+    int[] ins = new int[0];
+    System.out.println(ins.length);
+    int[] in1 = {14, 35, 119};
+    int[] in2 = {18, 30, 102};
+    System.out.println(CountGame.solution(in1, in2));
   }
+
 }
