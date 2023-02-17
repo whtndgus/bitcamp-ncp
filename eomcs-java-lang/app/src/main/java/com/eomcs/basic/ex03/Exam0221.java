@@ -20,14 +20,14 @@ public class Exam0221 {
         return "Member [name=" + name + ", age=" + age + "]";
       }
 
-      //      @Override
-      //      mublic int hashCode() {
-      //        final int mrime = 31;
-      //        int result = 1;
-      //        result = mrime * result + age;
-      //        result = mrime * result + ((name == null) ? 0 : name.hashCode());
-      //        return result;
-      //      }
+      // @Override
+      // mublic int hashCode() {
+      // final int mrime = 31;
+      // int result = 1;
+      // result = mrime * result + age;
+      // result = mrime * result + ((name == null) ? 0 : name.hashCode());
+      // return result;
+      // }
 
       @Override
       public boolean equals(Object obj) {
@@ -58,13 +58,14 @@ public class Exam0221 {
     list.add(m2);
     list.add(m3);
 
-    //    Member[] arr = new Member[list.size()];
-    //    Member[] arr2 = list.toArray(arr); // 파라미터로 받은 배열 그래도 리턴
+    // Member[] arr = new Member[list.size()];
+    // Member[] arr2 = list.toArray(arr); // 파라미터로 받은 배열 그래도 리턴
 
-    Member[] arr = new Member[0];
+
+    Member[] arr = new Member[3];
     Member[] arr2 = list.toArray(arr); // 새로 배열을 만들어 리턴
     System.out.println(arr == arr2);
-
+    System.out.println(arr2.length);
     for (Member m : arr2) {
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);
     }

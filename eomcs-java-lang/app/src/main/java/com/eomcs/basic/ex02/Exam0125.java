@@ -10,11 +10,16 @@ public class Exam0125 {
     // StringBuffer 에 들어 있는 문자열을 비교하려면?
     // - StringBuffer에서 String을 꺼내 비교하라!
     //
-    // String s1 = b1.toString();
-    // String s2 = b2.toString();
-    // System.out.println(s1.equals(s2));
+    String s1 = b1.toString();
+    String s2 = b2.toString();
+    System.out.println(s1.equals(s2));
     //
     System.out.println(b1.toString().equals(b2.toString()));
+
+    String test1 = "hi";
+    String test2 = new String("hi");
+    System.out.println(test1.equals(test2));
+
   }
 }
 

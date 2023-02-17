@@ -8,7 +8,6 @@ public class Exam0142 {
     My obj1 = new My();
     obj1.name = "홍길동";
     obj1.age = 20;
-
     My obj2 = new My();
     obj2.name = "홍길동";
     obj2.age = 20;
@@ -34,6 +33,7 @@ public class Exam0142 {
     public int hashCode() {
       return Objects.hash(age, name);
     }
+
     @Override
     public boolean equals(Object obj) {
       if (this == obj)
@@ -43,15 +43,10 @@ public class Exam0142 {
       if (getClass() != obj.getClass())
         return false;
       My other = (My) obj;
-      return age == other.age && Objects.equals(name, other.name);
+      return this.age == other.age && this.name.equals(other.name);
     }
   }
 
 }
-
-
-
-
-
 
 

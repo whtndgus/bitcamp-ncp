@@ -1,0 +1,167 @@
+@import 'https://fonts.googleapis.com/css?family=Baloo+Paaji';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-slide {
+  width: 100%;
+  min-height: 600px;
+}
+
+.type-block {
+  min-width: 100%;
+  min-height: 600px;
+  margin-bottom: 50px;
+  background-color: skyblue;
+  border-radius: 25px;
+}
+.type-block:first-child{
+  padding-top: 20px;
+}
+.top-menu {
+  width: 300px;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.top-menu span {
+  display: inline-block;
+  min-width: 70px;
+  height: 45px;
+  font-size: 25px;
+  line-height: 190%;
+  text-align: center;
+}
+.top-menu span {
+  -webkit-animation-fill-mode: forwards;
+  opacity: 0;
+  -webkit-animation-name: movingPara;
+  -webkit-animation-duration: 0.7s;
+  animation-name: movingPara;
+  animation-duration: 0.7s;
+}
+.top-menu span:first-child{
+  animation-delay: 0s;
+}
+.top-menu span:nth-child(2){
+  animation-delay: 0.2s;
+}
+.top-menu span:nth-child(3){
+  animation-delay: 0.4s;
+}
+.top-menu span:nth-child(4){
+  animation-delay: 0.6s;
+}
+.top-menu span:nth-child(5){
+  animation-delay: 0.8s;
+}
+.top-menu span:hover{
+  color: blue;
+  cursor: pointer;
+  line-height: 150%;
+  font-size: 30px !important;
+  font-weight: bold !important;
+}
+
+.main-middle-info{
+  width: 80%;
+  height: 300px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+.container {
+  width: 400px;
+  height: 220px;
+  position: relative;
+}
+
+h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+}
+h1 span {
+  width: 100%;
+  float: left;
+  color: #ffffff;
+  font-weight: bold;
+  opacity: 0;
+  animation-name: titleAnimation;
+  animation-timing-function: ease;
+  animation-duration: 1.2s;
+  text-align: center;
+}
+
+h1 span {
+  -webkit-animation-fill-mode: forwards;
+}
+h1 span:first-child {
+  animation-delay: 1s;
+}
+h1 span:nth-child(2) {
+  color: black;
+  animation-delay: 1.5s;
+}
+h1 span:last-child {
+  animation-delay: 2.0s;
+}
+
+@keyframes movingPara {
+
+  from { opacity: 0;  font-size: 0px;}
+
+  to {opacity: 1;  font-size: 25px; font-weight: 900;}
+
+}
+@keyframes titleAnimation {
+  0% {
+    transform: translateX(-500px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.main-bottom-info {
+  position: relative;
+  width: 80%;
+  max-width: 700px;
+  min-height: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+.main-bottom-info span {
+  text-align: center;
+  position: absolute;
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  -webkit-animation-fill-mode: forwards;
+  color: #fff3e1;
+  font-weight: bold;
+  opacity: 0;
+  animation-delay: 3s;
+  -webkit-animation-name: movingfoot;
+  -webkit-animation-duration: 1s;
+  animation-name: movingfoot;
+  animation-duration: 1s;
+}
+
+@keyframes movingfoot {
+
+  from { opacity: 0; top: 200%;}
+
+  to {opacity: 1;  top: 0%;}
+
+}

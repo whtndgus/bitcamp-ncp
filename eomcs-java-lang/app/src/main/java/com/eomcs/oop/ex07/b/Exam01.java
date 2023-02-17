@@ -1,8 +1,6 @@
 // 추상 클래스와 추상 메서드의 활용: 적용 전
 package com.eomcs.oop.ex07.b;
 
-import java.util.Arrays;
-
 public class Exam01 {
 
   static int[] createRandomNumbers(final int size) {
@@ -13,8 +11,8 @@ public class Exam01 {
 
     int count = size >> 1;
     for (int i = 0; i < count; i++) {
-      int index1 = (int)(Math.random() * size); 
-      int index2 = (int)(Math.random() * size);
+      int index1 = (int) (Math.random() * size);
+      int index2 = (int) (Math.random() * size);
       int temp = arr[index1];
       arr[index1] = arr[index2];
       arr[index2] = temp;
@@ -24,8 +22,8 @@ public class Exam01 {
 
   public static void main(String[] args) {
 
-    int[] values = createRandomNumbers(100000);
-    int[] values2 = Arrays.copyOf(values, values.length);
+    int[] values = createRandomNumbers(400);
+    int[] values2 = values.clone();
 
     BubbleSort s1 = new BubbleSort();
     QuickSort s2 = new QuickSort();
@@ -36,17 +34,21 @@ public class Exam01 {
     // BubbleSort 객체는 run()을 호출해야 하고,
     // QuickSort 객체는 start()를 호출해야 한다.
     //
-    display(s1, values);
-    display(s2, values2);
 
+    display(s2, values2);
+    display(s1, values);
+
+    for (int i = 0; i < 400; i++) {
+      System.out.println(values[i] + " " + values2[i]);
+    }
   }
 
   // 정렬을 수행하는 객체와 값을 주면
   // 그 값을 정렬한 후 출력하는 메서드이다.
   static void display(BubbleSort sorter, int[] values) {
 
-    //System.out.println("[정렬 전]");
-    //printNumbers(values);
+    // System.out.println("[정렬 전]");
+    // printNumbers(values);
 
     long start = System.currentTimeMillis();
 
@@ -56,14 +58,14 @@ public class Exam01 {
     long end = System.currentTimeMillis();
     System.out.printf("걸린시간: %d\n", end - start);
 
-    //System.out.println("[정렬 후]--------------------------");
-    //printNumbers(values);
+    // System.out.println("[정렬 후]--------------------------");
+    // printNumbers(values);
   }
 
   static void display(QuickSort sorter, int[] values) {
 
-    //System.out.println("[정렬 전]");
-    //printNumbers(values);
+    // System.out.println("[정렬 전]");
+    // printNumbers(values);
 
     long start = System.currentTimeMillis();
 
@@ -73,20 +75,16 @@ public class Exam01 {
     long end = System.currentTimeMillis();
     System.out.printf("걸린시간: %d\n", end - start);
 
-    //System.out.println("[정렬 후]--------------------------");
-    //printNumbers(values);
+    // System.out.println("[정렬 후]--------------------------");
+    // printNumbers(values);
   }
 
   static void printNumbers(int[] values) {
-    for (int  value : values) {
+    for (int value : values) {
       System.out.print(value + ",");
     }
     System.out.println();
   }
 }
-
-
-
-
 
 

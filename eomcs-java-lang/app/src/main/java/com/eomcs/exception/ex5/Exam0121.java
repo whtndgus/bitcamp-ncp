@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class Exam0121 {
 
-  static Board read() {
+  static Board read()
+      throws NumberFormatException, IllegalAccessException, IllegalArgumentException {
     try (Scanner keyScan = new Scanner(System.in)) {
       Board board = new Board();
 
@@ -30,16 +31,22 @@ public class Exam0121 {
     // 이 프로그램을 실행할 때,
     // 1) 번호를 입력할 때 숫자가 아닌 것을 입력하면, NumberFormatException 예외가 발생한다.
     // 2) 날짜를 입력할 때 yyyy-MM-dd 형식에 맞지 않게 입력하면, IllegalArgumentException 예외가 발생한다.
-    // 
+    //
     // 예외 클래스 이름을 보면 오류의 원인이 상세하게 나와 있지만,
     // 전체적인 그림에서 어느 객체에서 발생된 예외인지 직관적으로 알 수 없다.
-    // 
-    Board board = read();
-    System.out.println("---------------------");
-    System.out.printf("번호: %d\n", board.getNo());
-    System.out.printf("제목: %s\n", board.getTitle());
-    System.out.printf("내용: %s\n", board.getContent());
-    System.out.printf("등록일: %s\n", board.getCreatedDate());
+    //
+    Board board = null;
+    try {
+      board = read();
+      System.out.println("---------------------");
+      System.out.printf("번호: %d\n", board.getNo());
+      System.out.printf("제목: %s\n", board.getTitle());
+      System.out.printf("내용: %s\n", board.getContent());
+      System.out.printf("등록일: %s\n", board.getCreatedDate());
+    } catch (IllegalAccessException | IllegalArgumentException e) {
+      // TODO Auto-generated catch block
+      System.out.println(e);
+    }
   }
 }
 

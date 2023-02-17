@@ -20,14 +20,14 @@ public class Exam0130 {
         return "Member [name=" + name + ", age=" + age + "]";
       }
 
-      //      @Override
-      //      public int hashCode() {
-      //        final int mrime = 31;
-      //        int result = 1;
-      //        result = mrime * result + age;
-      //        result = mrime * result + ((name == null) ? 0 : name.hashCode());
-      //        return result;
-      //      }
+      @Override
+      public int hashCode() {
+        final int mrime = 31;
+        int result = 1;
+        result = mrime * result + age;
+        result = mrime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+      }
 
       @Override
       public boolean equals(Object obj) {
@@ -62,7 +62,7 @@ public class Exam0130 {
     // contains()
     // - 해당 인스턴스와 같은 객체가 있는지 알아낸다.
     // - 단 인스턴스 주소를 비교하는 것이 아니라
-    //   equals()의 결과가 true 인지 비교한다.
+    // equals()의 결과가 true 인지 비교한다.
     // - hashCode()의 리턴 값이 같을 필요는 없다.
     //
     Member m4 = new Member("임꺽정", 30);

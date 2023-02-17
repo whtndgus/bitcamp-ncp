@@ -5,13 +5,13 @@ public class Exam0411 {
 
   // Sedan과 Truck의 모델명과 cc를 출력하라!
 
-  public static void printSedan(Sedan sedan) {
+  public static void printSedan(Car sedan) {
     System.out.printf("모델명: %s\n", sedan.model);
     System.out.printf("cc: %d\n", sedan.cc);
     System.out.println("-------------------------");
   }
 
-  public static void printTruck(Truck truck) {
+  public static void printTruck(Car truck) {
     System.out.printf("모델명: %s\n", truck.model);
     System.out.printf("cc: %d\n", truck.cc);
     System.out.println("-------------------------");
@@ -40,7 +40,5 @@ public class Exam0411 {
   }
 
 }
-
-
 
 

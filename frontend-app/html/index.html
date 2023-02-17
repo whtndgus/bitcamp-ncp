@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-slide">
+    <div class="type-block blog-main">
+      <div class="top-menu">
+        <span class="move-info">소개</span>
+        <span class="move-skill">기술</span>
+        <span class="move-team">팀플</span>
+        <span class="move-history">경력</span>
+      </div>
+      <div class="main-middle-info">
+        <h1 class="title">
+          <span>안녕하세요</span>
+          <span>-조승현-</span>
+          <span>입니다</span>
+        </h1>
+      </div>
+      <div class="main-bottom-info">
+        <span>썬 마이크로시스템즈에서 1995년에 개발한 객체 지향 프로그래밍 언어. 현재는 OpenJDK는 GPL2이나 오라클이 배포하는 Oracle JDK는 상업라이선스로 2019년 1월부터 유료화정책을 강화하고 있다. Java EE는 이클립스 재단의 소유이다. Java 언어는 J2SE 1.4부터는 Java Community Process (JCP)에서 개발을 주도하고 있다.</span>
+      </div>
+    </div>
+    <div class="type-block blog-info">
+      <h1>소개</h1>
+
+    </div>
+    <div class="type-block blog-skill">
+      <h1>기술</h1>
+
+    </div>
+    <div class="type-block blog-team">
+      <h1>프로젝트</h1>
+
+    </div>
+    <div class="type-block blog-history">
+      <h1>경력</h1>
+
+    </div>
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script>
+    $(".move-info").click(() => {
+      var offset = $('.blog-info').offset();
+      offset.top = offset.top-50;
+      $('html').animate({scrollTop : offset.top}, 400);
+    });
+    $(".move-skill").click(() => {
+      var offset = $('.blog-skill').offset();
+      offset.top = offset.top-50;
+      $('html').animate({scrollTop : offset.top}, 800);
+    });
+    $(".move-team").click(() => {
+      var offset = $('.blog-team').offset();
+      offset.top = offset.top-50;
+      $('html').animate({scrollTop : offset.top}, 1200);
+    });
+    $(".move-history").click(() => {
+      var offset = $('.blog-history').offset();
+      offset.top = offset.top-50;
+      $('html').animate({scrollTop : offset.top}, 1600);
+    });
+  </script>
+</body>
+</html>

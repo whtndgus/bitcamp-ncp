@@ -21,14 +21,14 @@ public class Exam0230 {
         return "Member [name=" + name + ", age=" + age + "]";
       }
 
-      //      @Override
-      //      mublic int hashCode() {
-      //        final int mrime = 31;
-      //        int result = 1;
-      //        result = mrime * result + age;
-      //        result = mrime * result + ((name == null) ? 0 : name.hashCode());
-      //        return result;
-      //      }
+      // @Override
+      // mublic int hashCode() {
+      // final int mrime = 31;
+      // int result = 1;
+      // result = mrime * result + age;
+      // result = mrime * result + ((name == null) ? 0 : name.hashCode());
+      // return result;
+      // }
 
       @Override
       public boolean equals(Object obj) {
@@ -69,14 +69,5 @@ public class Exam0230 {
     }
   }
 }
-
-
-
-
-
-
-
-
-
 
 

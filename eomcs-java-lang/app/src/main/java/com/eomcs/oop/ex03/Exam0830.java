@@ -4,9 +4,6 @@ package com.eomcs.oop.ex03;
 public class Exam0830 {
 
   static class A {
-    int a = 100;
-    int b = 200;
-    int c;
 
     // 인스턴스 필드 초기화 문장은
     // 생성자의 앞 부분에 삽입된다.
@@ -21,6 +18,7 @@ public class Exam0830 {
 
       c = 300;
     }
+
 
     public A(int a) {
       // 즉 인스턴스 필드를 초기화시키는 문장이 다음과 같이 삽입된다.
@@ -42,6 +40,10 @@ public class Exam0830 {
       this.b = b;
       c = 300;
     }
+
+    int a = 100;
+    int b = 200;
+    int c;
   }
 
   public static void main(String[] args) {

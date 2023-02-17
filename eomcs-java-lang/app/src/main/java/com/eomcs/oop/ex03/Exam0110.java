@@ -24,16 +24,17 @@ public class Exam0110 {
     A obj1 = new A(); // A 클래스에서 변수 선언 명령을 실행한다. 주의! 메서드 정의는 실행하지 않는다!
     A obj2 = new A();
     A obj3 = new A();
-
+    int c;
+    c = 100;
     // 이렇게 생성된 메모리를 "인스턴스", "객체"라고 부른다.
     // 이 인스턴스의 주소를 저장하는 obj1, obj2, obj3를 "레퍼런스"라 부른다.
     // 인스턴스가 생성될 때 만들어지는 v1, v2를 변수를 "인스턴스 변수"라 부른다.
 
     // 인스턴스 변수는 레퍼런스를 통해 사용할 수 있다.
-    obj1.v1 = 100;
-    obj2.v1 = 200;
-    obj3.v1 = 300;
-
+    // obj1.v1 = 100;
+    // obj2.v1 = 200;
+    // obj3.v1 = 300;
+    System.out.println(c);
     System.out.printf("%d, %d, %d\n", obj1.v1, obj2.v1, obj3.v1);
   }
 }

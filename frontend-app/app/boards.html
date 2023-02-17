@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex07</title>
+<style>
+  table {
+    border: 0px;
+  }
+  .conten {
+    width: 100%;
+  }
+  th, td {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+  }
+  .conten th:first-child {
+    width: 50px;
+    background-color: red;
+  }
+  
+  .conten th:nth-child(2) {
+    background-color: orangered;
+  }
+  .conten th:nth-child(3) {
+    width: 70%;
+    background-color: yellow;
+  }
+  .conten th:nth-child(4) {
+    background-color: green;
+  }
+  .tbody {
+    background-color: #e3f2fd;
+  }
+  .tbody tr td:nth-child(3) {
+    background-color: #8bcfff;
+  }
+  table {
+    margin-bottom: 30px;
+  }
+  input {
+    font-size: 20px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<h1>jQuery 제작</h1>
+
+<table border="1">
+  <tr><th>제목</th><th>내용</th><th>비밀번호</th><th><button id="btn1">새로고침?</button></th></tr>
+<tr><th><input type="text" class="title" size="10" value="" maxlength="5"></th><th><input type="text" value="" size="35" class="contents"></th><th><input type="password" size="4" value="1234" class="password"></th><th><button id="btn2">글 작성</button></th></tr>
+
+
+</table>
+<table border="1" class="conten">
+<thead>
+    <tr><th>번호</th><th>제목</th><th>내용</th><th>조회수</th></tr>
+</thead>
+
+<tbody class="tbody">
+</tbody>
+</table>
+<table border="1">
+<thead>
+  <tr><th><input type="text" size="5" maxlength="3" value="0" class="no"></th><th><input type="password" size="7" class="ppassword"></th><th><button id=btn4>삭제</button></th><th><button id=btn5>수정</button></th><th><button id=reset>초기화</button></th>
+</thead>
+</table>
+<table border="1">
+<tbody class="tbody2">
+</tbody>
+</table>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+"use strict"
+$("#btn2").click(() => {
+  if($(".title").val() != "" && $(".contents").val() != "" && $(".password").val() != ""){
+    $(".tbody").empty();
+    $.getJSON( "http://192.168.0.7:8080/send?"+"title="+$(".title").val()+"&contents="+$(".contents").val()+"&password="+$(".password").val(), function( fn ) {
+      fn.forEach(b => { $("<tr>").html("<td>" + b.no + "</td>" + "<td>" + b.title + "</td>" + "<td>" + b.contents + "</td>" + "<td>" + b.count + "</td>" ).appendTo($(".tbody"))})
+    });
+    $(".title").val("");
+    $(".contents").val("");
+    $(".password").val("1234");
+  }
+})
+$("#btn1").click(() => {
+  $(".tbody").empty();
+    $.getJSON( "http://192.168.0.7:8080/board", function( fn ) {
+        fn.forEach(b => { $("<tr>").html("<td>" + b.no + "</td>" + "<td>" + b.title + "</td>" + "<td>" + b.contents + "</td>" + "<td>" + b.count + "</td>" ).appendTo($(".tbody"))})
+    });
+});
+$("#btn3").click(() => {
+  
+});
+$("#btn4").click(() => {
+    $.getJSON( "http://192.168.0.7:8080/remove/"+$(".no").val()+","+$(".ppassword").val(), function( fn ) {
+      if(fn.status == "succes"){
+        alert("삭제 완료");
+        $(".tbody").empty();
+        $(".tbody2").empty();
+        fn.obj.forEach(b => { $("<tr>").html("<td>" + b.no + "</td>" + "<td>" + b.title + "</td>" + "<td>" + b.contents + "</td>" + "<td>" + b.count + "</td>" ).appendTo($(".tbody"))});
+      }else{
+        alert("패스워드가 틀림");
+      }
+    });
+});
+$("#reset").click(() => {
+    $.getJSON( "http://192.168.0.7:8080/reset", function( fn ) {
+    });
+  $(".tbody").empty();
+  $(".tbody2").empty();
+});
+$("#btn5").click(() => {
+    $.getJSON( "http://192.168.0.7:8080/change/"+$(".no").val()+","+$(".ctext").val()+","+$(".ccontents").val()+","+$(".ppassword").val(), function( fn ) {
+      if(fn.status == "succes"){
+        alert("수정 완료");
+        $(".tbody").empty();
+        fn.obj.forEach(b => { $("<tr>").html("<td>" + b.no + "</td>" + "<td>" + b.title + "</td>" + "<td>" + b.contents + "</td>" + "<td>" + b.count + "</td>" ).appendTo($(".tbody"))});
+      }else{
+        alert("패스워드가 틀림");
+        $(".tbody").empty();
+        fn.obj.forEach(b => { $("<tr>").html("<td>" + b.no + "</td>" + "<td>" + b.title + "</td>" + "<td>" + b.contents + "</td>" + "<td>" + b.count + "</td>" ).appendTo($(".tbody"))});
+      }
+    });
+});
+let tmp = 0;
+setInterval(() => {
+  if($(".no").val() != tmp && $(".no").val() != ""){
+    $(".tbody2").empty();
+    tmp = $(".no").val();
+
+    fetch("http://192.168.0.7:8080/selboard", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded"
+      },
+      body: `no=${$(".no").val()}&password=${$(".ppassword").val()}`
+    }).then((response) => response.json())
+    .then((b) => {
+      $("<tr>").html("<td>" + "<input type=text size=7 value="+b.title+" class=ctext>" + "</td>" + "<td>" + "<input type=text size=65 value="+b.contents+" class=ccontents>" + "</td>").appendTo($(".tbody2"))
+      })
+      .catch((err) => console.log(err));
+  }
+}, 100);
+
+</script>
+</body>
+</html>
+
+
+
+
+

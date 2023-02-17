@@ -2,6 +2,7 @@
 package com.eomcs.basic.ex01;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class Exam0153 {
@@ -18,13 +19,18 @@ public class Exam0153 {
       return "MyKey2 [contents=" + contents + "]";
     }
 
-    //    @Override
-    //    public int hashCode() {
-    //      final int prime = 31;
-    //      int result = 1;
-    //      result = prime * result + ((contents == null) ? 0 : contents.hashCode());
-    //      return result;
-    //    }
+    // @Override
+    // public int hashCode() {
+    // final int prime = 31;
+    // int result = 1;
+    // result = prime * result + ((contents == null) ? 0 : contents.hashCode());
+    // return result;
+    // }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(contents);
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -35,16 +41,12 @@ public class Exam0153 {
       if (getClass() != obj.getClass())
         return false;
       MyKey2 other = (MyKey2) obj;
-      if (contents == null) {
-        if (other.contents != null)
-          return false;
-      } else if (!contents.equals(other.contents))
-        return false;
-      return true;
+      return Objects.equals(contents, other.contents);
     }
   }
+
   public static void main(String[] args) {
-    HashMap<MyKey2,Student> map = new HashMap<>();
+    HashMap<MyKey2, Student> map = new HashMap<>();
 
     MyKey2 k1 = new MyKey2("ok");
     MyKey2 k2 = new MyKey2("no");
@@ -76,10 +78,5 @@ public class Exam0153 {
     System.out.println(k3.equals(k6)); // equals()의 비교 결과도 같다.
   }
 }
-
-
-
-
-
 
 
