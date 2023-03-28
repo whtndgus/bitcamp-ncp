@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<script>
+
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
+    }
+  }
+
+
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+        appId      : '1343745176479778',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v16.0'
+      });
+
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+      statusChangeCallback(response);        // Returns the login status.
+    });
+  };
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+
+</script>
+
+
+<!-- The JS SDK Login Button -->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+<!-- Load the JS SDK asynchronously -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  </fb:login-button>
+
+  <div id="status">
+  </div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1343745176479778',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v16.0'
+      });
+        
+      FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+        statusChangeCallback(response);        // Returns the login status.
+      });
+        
+    };
+
+    function checkLoginState() {
+      FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+        statusChangeCallback(response);        // Returns the login status.
+      });
+    }
+    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+      console.log(response);                   // The current login status of the person.
+      if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+        act(response);
+      } else {                                 // Not logged into your webpage or we are unable to tell.
+        document.getElementById('status').innerHTML = '부탁 로그 ' +
+          '이 웹사이트.';
+      }
+    }
+    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+      console.log('환영!  변경된 너이 정보......');
+      FB.api('/me', function(response) {
+        console.log('성공적 로그 인 : ' + response.name);
+        document.getElementById('status').innerHTML =
+          '로그인 된 상태, ' + response.name + '!';
+      });
+    }
+    function act(response) {
+      fetch('http://192.168.0.7:8080/in', {
+        method: 'POST', // 또는 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(response.authResponse),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        document.getElementById('status').innerHTML =
+          '로그인 된 상태, ' + data.name + '!';
+      });
+    }
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+</body>
+</html>

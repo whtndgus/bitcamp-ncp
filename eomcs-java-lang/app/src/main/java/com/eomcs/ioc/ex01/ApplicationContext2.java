@@ -14,7 +14,11 @@ public class ApplicationContext2 {
 
   private void findFiles(File dir) {
     File[] files = dir.listFiles();
+    if (files == null)
+      return;
     for (File f : files) {
+      if (f == null)
+        continue;
       if (f.isDirectory()) {
         findFiles(f);
       } else {
@@ -27,7 +31,5 @@ public class ApplicationContext2 {
     return this.list;
   }
 }
-
-
 
 

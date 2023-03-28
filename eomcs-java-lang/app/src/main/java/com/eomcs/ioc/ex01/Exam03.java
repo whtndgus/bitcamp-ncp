@@ -9,10 +9,10 @@ public class Exam03 {
 
   public static void main(String[] args) {
     // 1) 패키지 경로 준비
-    File packageDir = new File("/Users/eomjinyoung/git/java106/java106-java-basic/bin/main/step19/ex1");
+    File packageDir = new File("/Users/bitcamp/git");
 
     // 2) 해당 디렉토리에서 파일 목록을 가져오기
-    ApplicationContext appContext = new ApplicationContext(packageDir);
+    ApplicationContext2 appContext = new ApplicationContext2(packageDir);
     List<File> files = appContext.getFiles();
     for (File f : files) {
       if (f.isDirectory()) {
@@ -26,8 +26,5 @@ public class Exam03 {
 
 
 }
-
-
-
 
 
